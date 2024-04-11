@@ -1,0 +1,10 @@
+cuda
+glove
+train
+*.pkl
+*.zip
+*.h5
+checkpoint
+*.jpg
+*.png
+*.keras
