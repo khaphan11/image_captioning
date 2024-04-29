@@ -30,7 +30,6 @@ class ImageCaptioningModel(nn.Module):
         self.se2 = nn.Dropout(0.5)
         self.se3 = nn.LSTM(embedding_dim, 256)
 
-        # decoder1 = fe2 + se3
         self.decoder2 = nn.Linear(256, 256)
 
         self.outputs = nn.Linear(256, vocab_size)
@@ -50,10 +49,6 @@ class ImageCaptioningModel(nn.Module):
         se3, (_, _) = self.se3(se2)
         se3 = se3[:, -1, :]
 
-
-        # if len(se3.shape) == 2:
-        #     decoder1 = torch.stack([torch.Tensor(se + fe) for se, fe in zip(se3, fe2)])
-        # else:
         decoder1 = fe2 + se3
 
         decoder2 = self.decoder2(decoder1)
