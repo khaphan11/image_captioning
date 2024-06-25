@@ -6,7 +6,7 @@ train
 *.h5
 checkpoint
 *.jpg
-*.png
+output.png
 *.keras
 __pycache__
 *.ipynb
